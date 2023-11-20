@@ -20,7 +20,7 @@ public class CompanyServiceTests
         {
             CompanyName = "Test Inc.",
             OrganizationNumber = "99999",
-            PhoneNumber = "070707070",
+            PhoneNumber = "07070707070",
             HqCity = "Sity",
             HqPostalCode = "32323",
             HqStreetName = "Gatan 32",
@@ -44,8 +44,8 @@ public class CompanyServiceTests
             .ReturnsAsync(false);
 
         mockAddressRepo
-            .Setup(repo => repo.GetAsync(x => x.StreetName == form.HqStreetName && x.PostalCode == form.HqPostalCode))
-            .ReturnsAsync(addressEntity);
+            .Setup(repo => repo.GetAsync(x => x.StreetName == form.HqStreetName && x.PostalCode == form.HqPostalCode && x.City == form.HqCity))
+            .ReturnsAsync(nullAddress);
 
         mockAddressRepo
             .Setup(repo => repo.CreateAsync(It.IsAny<AddressEntity>()))
@@ -55,10 +55,6 @@ public class CompanyServiceTests
             .Setup(repo => repo.GetAsync(x => x.PhoneNumber == form.PhoneNumber))
             .ReturnsAsync(phoneEntity);
 
-        //mockCompanyRepo
-        //    .Setup(repo => repo.CreateAsync(companyEntity))
-        //    .ReturnsAsync(companyEntity);
-
         ICompanyService companyService = new CompanyService(mockPhoneRepo.Object, mockAddressRepo.Object, mockCompanyRepo.Object);
 
         // Act
@@ -66,6 +62,5 @@ public class CompanyServiceTests
 
         // Assert
         mockAddressRepo.Verify(m => m.CreateAsync(It.IsAny<AddressEntity>()), Times.Once);
-        //Assert.Null(result);
     }
 }

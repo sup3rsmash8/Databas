@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Databasteknik_Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a43a53dae9f8551e6a6db7e09c57f8bd4e41b8b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1899b110dd37867b5437e82692e61c32439d76b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Databasteknik_Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Databasteknik_Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

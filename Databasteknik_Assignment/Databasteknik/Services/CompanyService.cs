@@ -34,14 +34,17 @@ public class CompanyService : ICompanyService
             // Check if we have the provided address in our database.
             // If not, create one.
             var addressEntity = await _addressRepository.GetAsync(x => x.StreetName == form.HqStreetName && x.PostalCode == form.HqPostalCode && x.City == form.HqCity);
-            addressEntity ??= await _addressRepository.CreateAsync(new AddressEntity { StreetName = form.HqStreetName, PostalCode = form.HqPostalCode, City = form.HqCity });
-
             if (addressEntity == null)
-                return null!;
+            {
+                addressEntity = await _addressRepository.CreateAsync(new AddressEntity { StreetName = form.HqStreetName, PostalCode = form.HqPostalCode, City = form.HqCity });
+            }
 
             // Same with phone.
             var phoneNumberEntity = await _phoneNumberRepository.GetAsync(x => x.PhoneNumber == form.PhoneNumber);
             phoneNumberEntity ??= await _phoneNumberRepository.CreateAsync(new PhoneNumberEntity { PhoneNumber = form.PhoneNumber });
+
+            if (addressEntity == null)
+                return null!;
 
             if (phoneNumberEntity == null)
                 return null!;
@@ -49,7 +52,7 @@ public class CompanyService : ICompanyService
             if (form.CompanyName == null || form.OrganizationNumber == null)
                 return null!;
 
-            var company = await _companyRepository.CreateAsync(new CompanyEntity()
+            var company = await _companyRepository.CreateAsync(new CompanyEntity
             {
                 CompanyName = form.CompanyName,
                 ContactPhoneNumberId = phoneNumberEntity.Id,

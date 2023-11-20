@@ -5,15 +5,27 @@ using System.Linq.Expressions;
 
 namespace Databasteknik.Services;
 
-public class CustomerService
+public interface ICustomerService
 {
-    private CustomerRepository _customerRepository;
+    Task<bool> AddItemToShoppingCart(CustomerEntity customerOwningShoppingCart, ProductBaseEntity product, int quantity);
+    Task<bool> CreateCustomerAsync(CustomerRegistrationForm form);
+    Task<bool> CustomerExistsAsync(Expression<Func<CustomerEntity, bool>> expression);
+    Task<IEnumerable<CustomerEntity>> GetAllCustomersAsync();
+    Task<CustomerEntity> GetCustomerAsync(Expression<Func<CustomerEntity, bool>> expression);
+    Task<bool> RemoveCustomerAsync(Expression<Func<CustomerEntity, bool>> expression);
+    Task<bool> RemoveItemFromShoppingCart(CustomerEntity customerOwningShoppingCart, ProductBaseEntity product, int amount);
+    Task<CustomerEntity> UpdateCustomerAsync(CustomerEntity customer);
+}
+
+public class CustomerService : ICustomerService
+{
+    private ICustomerRepository _customerRepository;
     private IAddressRepository _addressRepository;
     private IPhoneNumberRepository _phoneNumberRepository;
-    private ShoppingCartRepository _shoppingCartRepository;
-    private ShoppingCartItemRepository _shoppingCartItemRepository;
+    private IShoppingCartRepository _shoppingCartRepository;
+    private IShoppingCartItemRepository _shoppingCartItemRepository;
 
-    public CustomerService(CustomerRepository customerRepository, IAddressRepository addressRepository, IPhoneNumberRepository phoneNumberRepository, ShoppingCartRepository shoppingCartRepository, ShoppingCartItemRepository shoppingCartItemRepository)
+    public CustomerService(ICustomerRepository customerRepository, IAddressRepository addressRepository, IPhoneNumberRepository phoneNumberRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository)
     {
         _customerRepository = customerRepository;
         _addressRepository = addressRepository;

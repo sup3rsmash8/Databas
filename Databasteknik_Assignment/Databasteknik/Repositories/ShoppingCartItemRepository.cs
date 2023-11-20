@@ -3,7 +3,9 @@ using Databasteknik.Entities;
 
 namespace Databasteknik.Repositories;
 
-public class ShoppingCartItemRepository : Repo<ShoppingCartItemEntity>
+public interface IShoppingCartItemRepository : IRepo<ShoppingCartItemEntity> { }
+
+public class ShoppingCartItemRepository : Repo<ShoppingCartItemEntity>, IShoppingCartItemRepository
 {
     public ShoppingCartItemRepository(DataContext context) : base(context) { }
 }

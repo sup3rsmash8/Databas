@@ -5,14 +5,24 @@ using System.Linq.Expressions;
 
 namespace Databasteknik.Services;
 
-public class ProductService
+public interface IProductService
 {
-    private ProductBaseRepository _productRepository;
-    private ProductStockRepository _productStockRepository;
-    private ICompanyRepository _companyRepository;
-    private ProductCategoryRepository _categoryRepository;
+    Task<bool> AddArticlesOfProductTypeAsync(int productId, int articleCount);
+    Task<bool> CreateProductAsync(ProductRegistrationForm form);
+    Task<IEnumerable<ProductBaseEntity>> GetAllAsync();
+    Task<ProductBaseEntity> GetAsync(Expression<Func<ProductBaseEntity, bool>> expression);
+    Task<int> RemoveArticlesOfProductTypeAsync(int productId, int amount);
+    Task<bool> RemoveProductAsync(Expression<Func<ProductBaseEntity, bool>> expression);
+}
 
-    public ProductService(ProductBaseRepository productRepository, ICompanyRepository companyRepository, ProductCategoryRepository categoryRepository, ProductStockRepository productStockRepository)
+public class ProductService : IProductService
+{
+    private IProductBaseRepository _productRepository;
+    private IProductStockRepository _productStockRepository;
+    private ICompanyRepository _companyRepository;
+    private IProductCategoryRepository _categoryRepository;
+
+    public ProductService(IProductBaseRepository productRepository, ICompanyRepository companyRepository, IProductCategoryRepository categoryRepository, IProductStockRepository productStockRepository)
     {
         _productRepository = productRepository;
         _companyRepository = companyRepository;
@@ -22,8 +32,8 @@ public class ProductService
 
     public async Task<bool> CreateProductAsync(ProductRegistrationForm form)
     {
-        if (!await _productRepository.ExistsAsync(x => 
-            x.ProductName == form.ProductName && 
+        if (!await _productRepository.ExistsAsync(x =>
+            x.ProductName == form.ProductName &&
             x.Category.CategoryName == form.ProductCategory &&
             x.Company.OrganizationNumber == form.CompanyOrganizationNumber))
         {
@@ -120,7 +130,7 @@ public class ProductService
             await _productStockRepository.DeleteAsync(article);
             entity.InStock.Remove(article);
             await _productRepository.UpdateAsync(entity);
-            
+
             amount -= 1;
             deleted++;
         }

@@ -19,21 +19,21 @@ public class Program
         // Repo
         services.AddScoped<IAddressRepository, AddressRepository>();
         services.AddScoped<ICompanyRepository, CompanyRepository>();
-        services.AddScoped<CustomerRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IPhoneNumberRepository, PhoneNumberRepository>();
-        services.AddScoped<ProductBaseRepository>();
-        services.AddScoped<ProductCategoryRepository>();
-        services.AddScoped<ProductStockRepository>();
-        services.AddScoped<ReceiptItemRepository>();
-        services.AddScoped<ReceiptRepository>();
-        services.AddScoped<ShoppingCartItemRepository>();
-        services.AddScoped<ShoppingCartRepository>();
+        services.AddScoped<IProductBaseRepository, ProductBaseRepository>();
+        services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+        services.AddScoped<IProductStockRepository, ProductStockRepository>();
+        services.AddScoped<IReceiptItemRepository, ReceiptItemRepository>();
+        services.AddScoped<IReceiptRepository, ReceiptRepository>();
+        services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+        services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 
         // Services
         services.AddScoped<ICompanyService, CompanyService>();
-        services.AddScoped<CustomerService>();
-        services.AddScoped<ProductService>();
-        services.AddScoped<OrderService>();
+        services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IOrderService, OrderService>();
 
         // Menus
         services.AddScoped<MainMenu>();

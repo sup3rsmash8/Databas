@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Databasteknik_Tests
-build_property.ProjectDir = C:\Users\justu\Dropbox\Nackademin_Assignment_Databas\Databasteknik_Assignment\Databasteknik_Tests\
+build_property.ProjectDir = C:\Users\justu\Documents\GitHub\Databas\Databasteknik_Assignment\Databasteknik_Tests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

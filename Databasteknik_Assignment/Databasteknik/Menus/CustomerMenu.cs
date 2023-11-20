@@ -7,12 +7,12 @@ namespace Databasteknik.Menus;
 
 public class CustomerMenu
 {
-    private CustomerService _customerService;
-    private ProductService _productService;
-    private OrderService _orderService;
+    private ICustomerService _customerService;
+    private IProductService _productService;
+    private IOrderService _orderService;
     private CustomerEntity _loggedInCustomer;
 
-    public CustomerMenu(CustomerService customerService, ProductService productService, OrderService orderService)
+    public CustomerMenu(ICustomerService customerService, IProductService productService, IOrderService orderService)
     {
         _customerService = customerService;
         _loggedInCustomer = null!;

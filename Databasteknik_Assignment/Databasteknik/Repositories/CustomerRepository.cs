@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 
 namespace Databasteknik.Repositories;
 
-public class CustomerRepository : Repo<CustomerEntity>
+public interface ICustomerRepository : IRepo<CustomerEntity> { }
+
+public class CustomerRepository : Repo<CustomerEntity>, ICustomerRepository
 {
     public CustomerRepository(DataContext context) : base(context) { }
 

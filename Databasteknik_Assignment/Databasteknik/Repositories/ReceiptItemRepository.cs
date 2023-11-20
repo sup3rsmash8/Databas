@@ -3,7 +3,9 @@ using Databasteknik.Entities;
 
 namespace Databasteknik.Repositories;
 
-public class ReceiptItemRepository : Repo<ReceiptItemEntity>
+public interface IReceiptItemRepository : IRepo<ReceiptItemEntity> { }
+
+public class ReceiptItemRepository : Repo<ReceiptItemEntity>, IReceiptItemRepository
 {
     public ReceiptItemRepository(DataContext context) : base(context) { }
 }

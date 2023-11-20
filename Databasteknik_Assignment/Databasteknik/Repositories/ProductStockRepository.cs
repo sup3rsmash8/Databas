@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 
 namespace Databasteknik.Repositories;
 
-public class ProductStockRepository : Repo<ProductStockEntity>
+public interface IProductStockRepository : IRepo<ProductStockEntity> { }
+
+public class ProductStockRepository : Repo<ProductStockEntity>, IProductStockRepository
 {
     public ProductStockRepository(DataContext context) : base(context) { }
 

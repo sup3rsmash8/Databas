@@ -6,7 +6,11 @@ using System.Linq.Expressions;
 
 namespace Databasteknik.Repositories;
 
-public class ProductBaseRepository : Repo<ProductBaseEntity>
+public interface IProductBaseRepository : IRepo<ProductBaseEntity>
+{
+}
+
+public class ProductBaseRepository : Repo<ProductBaseEntity>, IProductBaseRepository
 {
     public ProductBaseRepository(DataContext context) : base(context) { }
 
@@ -17,7 +21,7 @@ public class ProductBaseRepository : Repo<ProductBaseEntity>
                 .Include(x => x.Company).ThenInclude(x => x.ContactPhoneNumber)
                 .Include(x => x.Company).ThenInclude(x => x.Address)
             .Include(x => x.InStock)
-                //.ThenInclude(x => x.ProductType)
+            //.ThenInclude(x => x.ProductType)
             .FirstOrDefaultAsync(expression);
 
         return entity ?? null!;
@@ -30,7 +34,7 @@ public class ProductBaseRepository : Repo<ProductBaseEntity>
                 .Include(x => x.Company).ThenInclude(x => x.ContactPhoneNumber)
                 .Include(x => x.Company).ThenInclude(x => x.Address)
             .Include(x => x.InStock)
-                //.ThenInclude(x => x.ProductType)
+            //.ThenInclude(x => x.ProductType)
             .ToListAsync();
 
         return entities ?? null!;

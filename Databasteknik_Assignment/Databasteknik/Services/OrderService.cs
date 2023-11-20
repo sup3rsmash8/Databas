@@ -4,16 +4,21 @@ using System.Diagnostics;
 
 namespace Databasteknik.Services;
 
-public class OrderService
+public interface IOrderService
 {
-    private ReceiptRepository _receiptRepository;
-    private ReceiptItemRepository _receiptItemRepository;
-    private CustomerRepository _customerRepository;
-    private ShoppingCartRepository _shoppingCartRepository;
-    private ProductBaseRepository _productBaseRepository;
-    private ProductService _productService;
+    Task<bool> MakePurchaseAsync(CustomerEntity customer);
+}
 
-    public OrderService(ReceiptRepository receiptRepository, ReceiptItemRepository receiptItemRepository, ProductBaseRepository productBaseRepository, ProductService productService, ShoppingCartRepository shoppingCartRepository, CustomerRepository customerRepository)
+public class OrderService : IOrderService
+{
+    private IReceiptRepository _receiptRepository;
+    private IReceiptItemRepository _receiptItemRepository;
+    private ICustomerRepository _customerRepository;
+    private IShoppingCartRepository _shoppingCartRepository;
+    private IProductBaseRepository _productBaseRepository;
+    private IProductService _productService;
+
+    public OrderService(IReceiptRepository receiptRepository, IReceiptItemRepository receiptItemRepository, IProductBaseRepository productBaseRepository, IProductService productService, IShoppingCartRepository shoppingCartRepository, ICustomerRepository customerRepository)
     {
         _receiptRepository = receiptRepository;
         _receiptItemRepository = receiptItemRepository;
@@ -51,7 +56,7 @@ public class OrderService
         }
         foreach (var item in shoppingCart.Items)
         {
-            var product = await _productBaseRepository.GetAsync(x => x.Id ==  item.Id);
+            var product = await _productBaseRepository.GetAsync(x => x.Id == item.Id);
             if (product == null) continue;
 
             int count = await _productService.RemoveArticlesOfProductTypeAsync(product.Id, item.Quantity);

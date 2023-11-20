@@ -9,11 +9,11 @@ public class FacultyMenu
 {
     private ICompanyService _companyService;
     private ICompanyRepository _companyRepository;
-    private ProductService _productService;
-    private CustomerService _customerService;
+    private IProductService _productService;
+    private ICustomerService _customerService;
 
 
-    public FacultyMenu(ICompanyService companyService, ICompanyRepository companyRepository, ProductService productService, CustomerService customerService)
+    public FacultyMenu(ICompanyService companyService, ICompanyRepository companyRepository, IProductService productService, ICustomerService customerService)
     {
         _companyService = companyService;
         _companyRepository = companyRepository;

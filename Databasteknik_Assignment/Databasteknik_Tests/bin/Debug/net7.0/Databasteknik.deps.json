@@ -10,8 +10,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "7.0.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.14",
-          "Microsoft.EntityFrameworkCore.Tools": "7.0.14",
-          "xunit.runner.visualstudio": "2.5.4"
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.14"
         },
         "runtime": {
           "Databasteknik.dll": {}
@@ -610,8 +609,7 @@
             "fileVersion": "6.0.21.52210"
           }
         }
-      },
-      "xunit.runner.visualstudio/2.5.4": {}
+      }
     }
   },
   "libraries": {
@@ -1039,13 +1037,6 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
-    },
-    "xunit.runner.visualstudio/2.5.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YUtEOBdArAISyb1cTWcHc6/bilSDB9q5lc8ughPQP1MqlAKSkxKMBqLQ+tiWMFRBd2o22E59nLD/4V5R3jfZxQ==",
-      "path": "xunit.runner.visualstudio/2.5.4",
-      "hashPath": "xunit.runner.visualstudio.2.5.4.nupkg.sha512"
     }
   }
 }

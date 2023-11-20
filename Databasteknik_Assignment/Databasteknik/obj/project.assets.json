@@ -1053,18 +1053,6 @@
             "rid": "win"
           }
         }
-      },
-      "xunit.runner.visualstudio/2.5.4": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/_._": {}
-        },
-        "runtime": {
-          "lib/net6.0/_._": {}
-        },
-        "build": {
-          "build/net6.0/xunit.runner.visualstudio.props": {}
-        }
       }
     }
   },
@@ -2887,39 +2875,13 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "xunit.runner.visualstudio/2.5.4": {
-      "sha512": "YUtEOBdArAISyb1cTWcHc6/bilSDB9q5lc8ughPQP1MqlAKSkxKMBqLQ+tiWMFRBd2o22E59nLD/4V5R3jfZxQ==",
-      "type": "package",
-      "path": "xunit.runner.visualstudio/2.5.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "build/net462/xunit.abstractions.dll",
-        "build/net462/xunit.runner.reporters.net452.dll",
-        "build/net462/xunit.runner.utility.net452.dll",
-        "build/net462/xunit.runner.visualstudio.props",
-        "build/net462/xunit.runner.visualstudio.testadapter.dll",
-        "build/net6.0/xunit.abstractions.dll",
-        "build/net6.0/xunit.runner.reporters.netcoreapp10.dll",
-        "build/net6.0/xunit.runner.utility.netcoreapp10.dll",
-        "build/net6.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll",
-        "build/net6.0/xunit.runner.visualstudio.props",
-        "lib/net462/_._",
-        "lib/net6.0/_._",
-        "xunit.runner.visualstudio.2.5.4.nupkg.sha512",
-        "xunit.runner.visualstudio.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.EntityFrameworkCore.Design >= 7.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.14",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.14",
-      "xunit.runner.visualstudio >= 2.5.4"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.14"
     ]
   },
   "packageFolders": {
@@ -2929,11 +2891,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\justu\\Dropbox\\Nackademin_Assignment_Databas\\Databasteknik_Assignment\\Databasteknik\\Databasteknik.csproj",
+      "projectUniqueName": "C:\\Users\\justu\\Documents\\GitHub\\Databas\\Databasteknik_Assignment\\Databasteknik\\Databasteknik.csproj",
       "projectName": "Databasteknik",
-      "projectPath": "C:\\Users\\justu\\Dropbox\\Nackademin_Assignment_Databas\\Databasteknik_Assignment\\Databasteknik\\Databasteknik.csproj",
+      "projectPath": "C:\\Users\\justu\\Documents\\GitHub\\Databas\\Databasteknik_Assignment\\Databasteknik\\Databasteknik.csproj",
       "packagesPath": "C:\\Users\\justu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\justu\\Dropbox\\Nackademin_Assignment_Databas\\Databasteknik_Assignment\\Databasteknik\\obj\\",
+      "outputPath": "C:\\Users\\justu\\Documents\\GitHub\\Databas\\Databasteknik_Assignment\\Databasteknik\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2982,12 +2944,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.14, )"
-          },
-          "xunit.runner.visualstudio": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[2.5.4, )"
           }
         },
         "imports": [

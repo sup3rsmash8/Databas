@@ -3,7 +3,9 @@ using Databasteknik.Entities;
 
 namespace Databasteknik.Repositories;
 
-public class ProductCategoryRepository : Repo<ProductCategoryEntity>
+public interface IProductCategoryRepository : IRepo<ProductCategoryEntity> { }
+
+public class ProductCategoryRepository : Repo<ProductCategoryEntity>, IProductCategoryRepository
 {
     public ProductCategoryRepository(DataContext context) : base(context) { }
 }
